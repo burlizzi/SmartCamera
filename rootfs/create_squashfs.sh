@@ -7,7 +7,8 @@ mkdir -p tmpfs
 cp -af rootfs/* tmpfs
 rm -rf tmpfs/usr/* tmpfs/etc/jffs2/*
 
-./mksquashfs tmpfs/ root.sqsh4 -noappend -comp xz
-./mksquashfs rootfs/usr usr.sqsh4 -noappend -comp xz
+mksquashfs tmpfs/ root.sqsh4 -noappend -comp xz
+mksquashfs rootfs/usr usr.sqsh4 -noappend -comp xz
+mksquashfs rootfs tutto.sqsh4 -noappend -comp xz
 
 rm -rf tmpfs

@@ -14,7 +14,7 @@ LOCAL_MODULE := daemon
 
 LOCAL_CFLAGS := -D__LINUX__
 
-PREFIX := arm-none-linux-gnueabi-
+PREFIX :=  ~/opt/arm-anykav200-crosstool/usr/bin/arm-anykav200-linux-uclibcgnueabi-
 
 LOCAL_SHARED_LIBRARIES := pthread
 

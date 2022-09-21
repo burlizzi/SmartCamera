@@ -8,9 +8,9 @@
 #define UNICODE_START_CODE  0X4E00
 #define UNICODE_END_CODE    0X9FA5
 
-#define FONT_720_DATA_PATH  "/usr/bin/anyka_font_24.bin"
-#define FONT_VGA_DATA_PATH  "/usr/bin/anyka_font_16.bin"
-#define GB_UNICODE_PATH  	"/usr/bin/gb_un.bin"
+#define FONT_720_DATA_PATH  "/usr/local/ak_font_16.bin"
+#define FONT_VGA_DATA_PATH  "/usr/local/ak_font_16.bin"
+#define GB_UNICODE_PATH  	"/usr/local/ak_font_16.bin"
 //#define TWO_FONT_SWITCH
 /**
 * @brief  return font buf
@@ -53,7 +53,7 @@ static pthread_mutex_t font_mutex;
 
 /**
  * NAME        font_lib_get_font_from_bin
- * @BRIEF	´Óbin ÎÄ¼ş»ñÈ¡×ÖÌå
+ * @BRIEF	ï¿½ï¿½bin ï¿½Ä¼ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
                   
  * @PARAM	T_U16 code,  
  			unsigned char *font_buffer_720,  store 720p font data
@@ -120,7 +120,7 @@ void font_lib_get_font_from_bin(T_U16 code,  unsigned char *font_buffer_720,  un
 
 /**
  * NAME        font_lib_get_font_from_bin
- * @BRIEF	´Óbin ÎÄ¼ş»ñÈ¡×ÖÌå
+ * @BRIEF	ï¿½ï¿½bin ï¿½Ä¼ï¿½ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½
                   
  * @PARAM	T_U16 code,  
  			unsigned char *font_buffer_720,  store 720p font data
@@ -145,7 +145,7 @@ void font_lib_get_font_from_bin(T_U16 code,  unsigned char *font_buffer_720,  un
     }
     else
     {
-        //ÏµÍ³ÖĞÎŞ´Ë×ÖÌåĞÅÏ¢
+        //ÏµÍ³ï¿½ï¿½ï¿½Ş´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
         offset = 0x1F;
         //anyka_print("[%s:%d]we don't include the font(0x%04x)\n", __func__, __LINE__, code);
     }
@@ -174,7 +174,7 @@ void font_lib_get_font_from_bin(T_U16 code,  unsigned char *font_buffer_720,  un
 
 /**
  * NAME        font_lib_init
- * @BRIEF	³õÊ¼»¯×ÖÌå¿â
+ * @BRIEF	ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                   
  * @PARAM	unsigned short *unicode_data,  unicode data
  			int num,	unicode data number
@@ -186,7 +186,7 @@ void font_lib_init(unsigned short *unicode_data, int num)
 {
 	
     int i, len;
-    //±ê×¼µÄÏÔÊ¾ºº×Ö£¬°üÀ¨"ĞÇÆÚÒ»¶şÈıËÄÎåÁùÌìÄêÔÂÈÕ"
+    //ï¿½ï¿½×¼ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½"ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½"
     unsigned short all_number[] = {'-', ':', '/', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
     		'S', 'u', 'M', 'o', 'n','T', 'e', 's', 'W', 'd', 'h', 'r', 'F',  'i', 'S', 'a', 0x5e74,
         	0x6708, 0x65e5, 0x661f, 0x671f, 0x5929, 0x4e00, 0x4e8c, 0x4e09, 0x56db, 0x4e94, 0x516d};
@@ -258,7 +258,7 @@ void font_lib_init(unsigned short *unicode_data, int num)
 
 /**
  * NAME        font_update_osd_info
- * @BRIEF	¸üĞÂ×ÖÌå¿â
+ * @BRIEF	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                   
  * @PARAM	unsigned short *unicode_data,  unicode data
  			int num,	unicode data number
@@ -290,7 +290,7 @@ void font_update_osd_info(unsigned short *unicode_data, int num)
 
 /**
  * NAME        font_lib_get_data
- * @BRIEF	»ñÈ¡×ÖÌå¿âÊı¾İ
+ * @BRIEF	ï¿½ï¿½È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                   
  * @PARAM	unsigned short code, 
  			int font_dot
@@ -333,7 +333,7 @@ unsigned char *font_lib_get_data(unsigned short code, int font_dot)
 
 /**
  * NAME        font_gb_to_unicode
- * @BRIEF	gb Âë×ªunicode
+ * @BRIEF	gb ï¿½ï¿½×ªunicode
                   
  * @PARAM	unsigned char * gb_code, 
  			unsigned short * un_code
@@ -406,7 +406,7 @@ int font_gb_to_unicode(unsigned char * gb_code, unsigned short * un_code)
 
 /**
  * NAME        font_unicode_to_gb
- * @BRIEF	unicode Âë×ªgb 
+ * @BRIEF	unicode ï¿½ï¿½×ªgb 
                   
  * @PARAM	unsigned short * un_code, 
  			unsigned char * gb_code
@@ -468,7 +468,7 @@ int font_unicode_to_gb(unsigned short * un_code, unsigned char * gb_code)
 
 /**
  * NAME        font_utf8_to_unicode
- * @BRIEF	utf8 Âë×ªunicode 
+ * @BRIEF	utf8 ï¿½ï¿½×ªunicode 
                   
  * @PARAM	char* pInput, 
  			char* ppOutput,
@@ -481,31 +481,31 @@ int font_utf8_to_unicode(char* pInput, char* ppOutput)
     int outputSize = 0; 
     
     memset(ppOutput, 0, strlen(pInput) * 2);
-    char *tmp = ppOutput; //ÁÙÊ±±äÁ¿£¬ÓÃÓÚ±éÀúÊä³ö×Ö·û´®
+    char *tmp = ppOutput; //ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
  
     while (*pInput)
     {
-        if (*pInput > 0x00 && *pInput <= 0x7F) //´¦Àíµ¥×Ö½ÚUTF8×Ö·û£¨Ó¢ÎÄ×ÖÄ¸¡¢Êı×Ö£©
+        if (*pInput > 0x00 && *pInput <= 0x7F) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½UTF8ï¿½Ö·ï¿½ï¿½ï¿½Ó¢ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½
         {
             *tmp = *pInput;
             tmp++;
-            *tmp = 0; //Ğ¡¶Ë·¨±íÊ¾£¬ÔÚ¸ßµØÖ·Ìî²¹0
+            *tmp = 0; //Ğ¡ï¿½Ë·ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ú¸ßµï¿½Ö·ï¿½î²¹0
         }
-        else if (((*pInput) & 0xE0) == 0xC0) //´¦ÀíË«×Ö½ÚUTF8×Ö·û
+        else if (((*pInput) & 0xE0) == 0xC0) //ï¿½ï¿½ï¿½ï¿½Ë«ï¿½Ö½ï¿½UTF8ï¿½Ö·ï¿½
         {
             char high = *pInput;
             pInput++;
             char low = *pInput;            
-            if ((low & 0xC0) != 0x80)  //¼ì²éÊÇ·ñÎªºÏ·¨µÄUTF8×Ö·û±íÊ¾
+            if ((low & 0xC0) != 0x80)  //ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Îªï¿½Ï·ï¿½ï¿½ï¿½UTF8ï¿½Ö·ï¿½ï¿½ï¿½Ê¾
             {
-                return 0; //Èç¹û²»ÊÇÔò±¨´í
+                return 0; //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ò±¨´ï¿½
             }
    
             *tmp = (high << 6) + (low & 0x3F);
             tmp++;
             *tmp = (high >> 2) & 0x07;
         }
-        else if (((*pInput) & 0xF0) == 0xE0) //´¦ÀíÈı×Ö½ÚUTF8×Ö·û
+        else if (((*pInput) & 0xF0) == 0xE0) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½UTF8ï¿½Ö·ï¿½
         {
             char high = *pInput;
             pInput++;
@@ -520,7 +520,7 @@ int font_utf8_to_unicode(char* pInput, char* ppOutput)
             tmp++;
             *tmp = (high << 4) + ((middle >> 2) & 0x0F); 
         }
-        else //¶ÔÓÚÆäËû×Ö½ÚÊıµÄUTF8×Ö·û²»½øĞĞ´¦Àí
+        else //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö½ï¿½ï¿½ï¿½ï¿½ï¿½UTF8ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½ï¿½
         {
             return 0;
         }        
@@ -536,7 +536,7 @@ int font_utf8_to_unicode(char* pInput, char* ppOutput)
 
 /**
  * NAME        font_unicode_to_utf8
- * @BRIEF	unicode Âë×ªutf8
+ * @BRIEF	unicode ï¿½ï¿½×ªutf8
                   
  * @PARAM	const unsigned short *unicode, 
  			int ucLen, 
@@ -595,9 +595,9 @@ int font_unicode_to_utf8(const unsigned short *unicode, int ucLen, unsigned char
 
 /**
 * @brief 	font_update_osd_font_info
-* 			¸üĞÂ×Ö¿âÄÚÈİ²¢µ÷ÓÃ»Øµ÷º¯Êı½«ÄÚÈİ¸üĞÂÏÔÊ¾µ½ÆÁÄ»ÉÏ
+* 			ï¿½ï¿½ï¿½ï¿½ï¿½Ö¿ï¿½ï¿½ï¿½ï¿½İ²ï¿½ï¿½ï¿½ï¿½Ã»Øµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ¸ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ä»ï¿½ï¿½
 * @date 	2015/12
-* @param:	utf 8 ±àÂëµÄ×Ö·û´®£¬ »Øµ÷º¯Êı
+* @param:	utf 8 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
 * @return 	int
 * @retval 	0->success, -1 failed
 */
@@ -605,8 +605,8 @@ int font_unicode_to_utf8(const unsigned short *unicode, int ucLen, unsigned char
 int font_update_osd_font_info(char *input_strings, update_osd_show update_osd_cb)
 {
 	/*
-	** Ö»Íê³É¸üĞÂfont lib Ïà¹Ø¶«Î÷£¬Òª×îÖÕÏÔÊ¾¸Ä±ä»¹Òª¸Ä×ÖÌåÏÔÊ¾ÓÃµ½µÄ¾ä±úµÄÄÚÈİ
-	** Õâ²¿·ÖÔÚ»Øµ÷ÀïÃæ´¦Àí£¬ÒòÎª¿¼ÂÇµ½ºóÃæÊµ¼ÊĞŞ¸Ä¾ä±úĞÅÏ¢Ïà¹ØÄÚÈİ»á¸Ä±ä¡£
+	** Ö»ï¿½ï¿½É¸ï¿½ï¿½ï¿½font lib ï¿½ï¿½Ø¶ï¿½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ä±ä»¹Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½Ãµï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	** ï¿½â²¿ï¿½ï¿½ï¿½Ú»Øµï¿½ï¿½ï¿½ï¿½æ´¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½Çµï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ï¿½Ş¸Ä¾ï¿½ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½İ»ï¿½Ä±ä¡£
 	*/
 	int uni_len;
 	unsigned short osd_unicode[100] = {0};

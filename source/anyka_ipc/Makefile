@@ -95,12 +95,12 @@ LOCAL_MODULE := anyka_ipc
 
 LOCAL_CFLAGS := -D__LINUX__
 
-PREFIX := arm-none-linux-gnueabi-
+PREFIX :=  ~/opt/arm-anykav200-crosstool/usr/bin/arm-anykav200-linux-uclibcgnueabi-
 
-#链接时指定的libs所在目录
-LOCAL_SHARED_LIBRARIES :=  akuio akmedialib akaudiocodec akaudiofilter akstreamenclib akmotiondetectlib
+#锟斤拷锟斤拷时指锟斤拷锟斤拷libs锟斤拷锟斤拷目录
+LOCAL_SHARED_LIBRARIES :=  akuio akmedialib akaudiocodec akaudiofilter akv_encode ak_mt akispsdk pthread 
 
-#编译时指定的要使用的外部头文件目录
+#锟斤拷锟斤拷时指锟斤拷锟斤拷要使锟矫碉拷锟解部头锟侥硷拷目录
 LOCAL_C_INCLUDES := $(LIBMEDIA_DIR)/akmedialib/include/akmedialib \
 					$(LIBMEDIA_DIR)/akmedialib/include \
 					$(LIBMEDIA_DIR)/akuiolib/include \
@@ -112,13 +112,10 @@ LOCAL_C_INCLUDES := $(LIBMEDIA_DIR)/akmedialib/include/akmedialib \
 					./mid/include \
 					./include \
 					./ \
-#链接时指定要链接的lib.
-LOCAL_LDFLAGS := -L$(LIBMEDIA_DIR)/akmedialib/usr/lib \
-				-L$(LIBMEDIA_DIR)/akuiolib/usr/lib \
-				-L$(LIBMEDIA_DIR)/rootfs_tencent/lib \
-				-L$(LIBMEDIA_DIR)/rootfs_tencent/usr/lib \
-				-L./ \
-				-L./app \
+#锟斤拷锟斤拷时指锟斤拷要锟斤拷锟接碉拷lib.
+LOCAL_LDFLAGS := -L./ \
+				 -L../../lib \
+				 -L./app \
 
 
 LOCAL_LDFLAGS += ./app/libpcm.a	

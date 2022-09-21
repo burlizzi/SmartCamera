@@ -944,9 +944,9 @@ int anyka_init_camera_info(Pcamera_disp_setting pcamera_disp_setting)
     }
 
 	/*** ??ȡcamera ?εĸ?????Ϣ????û????ʹ??Ĭ??ֵ ***/
-    anyka_config_get_title(config_handle, "camera", "width", value, "1280");  
+    anyka_config_get_title(config_handle, "camera", "width", value, "1920");  
     pcamera_disp_setting->width = atoi(value); 
-    anyka_config_get_title(config_handle, "camera", "height", value, "720");  
+    anyka_config_get_title(config_handle, "camera", "height", value, "1080");  
     pcamera_disp_setting->height = atoi(value); 
     anyka_config_get_title(config_handle, "camera", "osd_position", value, "1");  
     pcamera_disp_setting->osd_position = atoi(value);

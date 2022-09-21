@@ -1,7 +1,7 @@
 /************************************************************
-Ä¿Ç°·¢ÏÖ£¬ÎÒÃÇÔÚºÏ³ÉÂ¼ÏñÎÄ¼þµÄÊ±ºò£¬»áÓÐ¶ÁµÄ²Ù×÷£¬
-¶ÁÊÇÒªËùÓÐÊý¾ÝÐ´ÍêÖ®ºóÔÙÄÜÕý³£¹¤×÷£¬Ä¿Ç°»¹ÊÇÉè¼ÆÎª
-½«ËùÓÐµÄÐ´µÄÊý¾Ý·Åµ½Ò»¸ö¶ÓÁÐÖÐ£¬×¨ÃÅÓÃÒ»¸öÏß³ÌÀ´Ð´Êý¾Ý
+Ä¿Ç°ï¿½ï¿½ï¿½Ö£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÚºÏ³ï¿½Â¼ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½Ê±ï¿½ò£¬»ï¿½ï¿½Ð¶ï¿½ï¿½Ä²ï¿½ï¿½ï¿½ï¿½ï¿½
+ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð´ï¿½ï¿½Ö®ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îª
+ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½Ý·Åµï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½×¨ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ß³ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½
 *************************************************************/
 
 
@@ -106,8 +106,8 @@ void anyka_fs_asyn_free(void *item)
 
 /**
  * NAME         anyka_fs_asyn_write_main
- * @BRIEF	ÏµÍ³Ð´ÎÄ¼þµÄÖ÷Ïß³Ì
- * @PARAM	arg ÓÃ»§Êý¾Ý
+ * @BRIEF	ÏµÍ³Ð´ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½
+ * @PARAM	arg ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
                    
  
  * @RETURN	void *
@@ -118,7 +118,7 @@ void anyka_fs_asyn_free(void *item)
 void* anyka_fs_asyn_write_main(void *arg)
 {
 	anyka_print("[%s:%d] This thread id : %ld\n", __func__, __LINE__, (long int)gettid());
-
+    sleep(10);
 	int write_size, cur_size;
     unsigned long tick = 0;
     //system_user_info * set_info = anyka_get_system_user_info();
@@ -182,7 +182,7 @@ void* anyka_fs_asyn_write_main(void *arg)
 
 /**
  * NAME         anyka_fs_init
- * @BRIEF	´´½¨Òì²½Ð´µÄ¾ä±ú
+ * @BRIEF	ï¿½ï¿½ï¿½ï¿½ï¿½ì²½Ð´ï¿½Ä¾ï¿½ï¿½
  * @PARAM	void
 **/                   
 void anyka_fs_init(void)
@@ -207,7 +207,7 @@ void anyka_fs_init(void)
     }
     
     pthread_mutex_init(&panyka_asyn->fs_lock, NULL); 
-    panyka_asyn->asyn_write_queue = anyka_queue_init(500); //¸Ã¶ÓÁÐÈç¹û¹ýÐ¡µÄ»°ÈÝÒ×³öÏÖÒì²½Ð´»º³åÒç³ö
+    panyka_asyn->asyn_write_queue = anyka_queue_init(500); //ï¿½Ã¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½Ä»ï¿½ï¿½ï¿½ï¿½×³ï¿½ï¿½ï¿½ï¿½ì²½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     if(panyka_asyn->asyn_write_queue == NULL)
     {
         anyka_print("[%s:%d] it fail to create queue!\n", __func__, __LINE__);
@@ -239,7 +239,7 @@ void anyka_fs_init(void)
 
 /**
  * NAME         anyka_fs_reset
- * @BRIEF	´´½¨Òì²½Ð´µÄ¾ä±ú
+ * @BRIEF	ï¿½ï¿½ï¿½ï¿½ï¿½ì²½Ð´ï¿½Ä¾ï¿½ï¿½
  * @PARAM	void
 **/                   
 
@@ -254,8 +254,8 @@ void anyka_fs_reset(void)
 
 /**
  * NAME         anyka_fs_insert_file
- * @BRIEF	½«Ò»¸öÎÄ¼þ²åÈëµ½Òì²½Ð´¶ÓÁÐÖÐ
- * @PARAM	file_id   ÎÄ¼þID
+ * @BRIEF	ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½ï¿½ï¿½ëµ½ï¿½ì²½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @PARAM	file_id   ï¿½Ä¼ï¿½ID
                    
  
  * @RETURN	void 
@@ -292,8 +292,8 @@ void anyka_fs_insert_file(int file_id)
 
 /**
  * NAME         anyka_fs_set_file_size
- * @BRIEF	ÉèÖÃÒì²½Ð´ÎÄ¼þµÄ´óÐ¡
- * @PARAM	file_id   ÎÄ¼þID
+ * @BRIEF	ï¿½ï¿½ï¿½ï¿½ï¿½ì²½Ð´ï¿½Ä¼ï¿½ï¿½Ä´ï¿½Ð¡
+ * @PARAM	file_id   ï¿½Ä¼ï¿½ID
  * @RETURN	void 
  * @RETVAL	
  */
@@ -324,8 +324,8 @@ int anyka_fs_set_file_size(int file_id, int file_size)
 
 /**
  * NAME         anyka_fs_remove_file
- * @BRIEF	½«ÎÄ¼þÒÆ³öÒì²½Ð´¶ÓÁÐÖÐ
- * @PARAM	file_id   ÎÄ¼þID
+ * @BRIEF	ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Æ³ï¿½ï¿½ì²½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+ * @PARAM	file_id   ï¿½Ä¼ï¿½ID
                    
  
  * @RETURN	void 
@@ -367,8 +367,8 @@ void anyka_fs_remove_file(int file_id)
 
 /**
  * NAME         anyka_fs_check_file_over
- * @BRIEF	¼ì²éµ±Ç°Õâ¸öÎÄ¼þÊÇ·ñÒì²½Ð´½áÊø
- * @PARAM	file_id   ÎÄ¼þID
+ * @BRIEF	ï¿½ï¿½éµ±Ç°ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ï¿½Ç·ï¿½ï¿½ì²½Ð´ï¿½ï¿½ï¿½ï¿½
+ * @PARAM	file_id   ï¿½Ä¼ï¿½ID
                    
  
  * @RETURN	void 
@@ -404,8 +404,8 @@ uint8 anyka_fs_check_file_over(int file_id)
 
 /**
  * NAME         anyka_fs_flush
- * @BRIEF	½áÊøÒì²½Ð´,²¢½«¶ÔÓ¦µÄÎÄ¼þIDµÄÒì²½Ð´Êý¾ÝÈ«²¿Ð´Íê
- * @PARAM	file_id   ÎÄ¼þID
+ * @BRIEF	ï¿½ï¿½ï¿½ï¿½ï¿½ì²½Ð´,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½Ä¼ï¿½IDï¿½ï¿½ï¿½ì²½Ð´ï¿½ï¿½ï¿½ï¿½È«ï¿½ï¿½Ð´ï¿½ï¿½
+ * @PARAM	file_id   ï¿½Ä¼ï¿½ID
                    
  
  * @RETURN	void 
@@ -433,7 +433,7 @@ void anyka_fs_flush(int file_id)
 
 /**
  * NAME         anyka_fs_read
- * @BRIEF	¶ÁÊý¾Ý£¬Ä¿Ç°Ã»ÓÐÐèÒª½øÐÐÒì²½·½Ê½ £¬ËùÒÔÖ±½Ó¶Á
+ * @BRIEF	ï¿½ï¿½ï¿½ï¿½ï¿½Ý£ï¿½Ä¿Ç°Ã»ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½ï¿½ì²½ï¿½ï¿½Ê½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö±ï¿½Ó¶ï¿½
  * @PARAM	hFile
                     buf
                     size                   
@@ -450,7 +450,7 @@ T_S32 anyka_fs_read(T_S32 hFile, T_pVOID buf, T_S32 size)
 
 /**
  * NAME         anyka_fs_write
- * @BRIEF	Òì²½Ð´Êý¾Ý£¬Èç¹û²»ÔÚÒì²½Ð´¶ÓÁÐÀï£¬Ö±½ÓÐ´
+ * @BRIEF	ï¿½ì²½Ð´ï¿½ï¿½ï¿½Ý£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì²½Ð´ï¿½ï¿½ï¿½ï¿½ï¿½ï£¬Ö±ï¿½ï¿½Ð´
  * @PARAM	hFile
                     buf
                     size                   
@@ -476,7 +476,7 @@ T_S32 anyka_fs_write(T_S32 hFile, T_pVOID buf, T_S32 size)
         return 0;
     }
 
-    //Èç¹û¶ÓÁÐÂú£¬½«µÈ´ý¿Õ¼äÊÍ·ÅÔÙÐ´Êý¾Ý
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½ï¿½Õ¼ï¿½ï¿½Í·ï¿½ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½
     while(anyka_queue_is_full(panyka_asyn->asyn_write_queue) && retry_time < 10)
     {
         usleep(10*1000);
@@ -569,7 +569,7 @@ T_S32 anyka_fs_seek(T_S32 hFile, T_S32 offset, T_S32 whence)
 
 /**
  * NAME         anyka_fs_tell
- * @BRIEF	µÃµ½µ±Ç°ÎÄ¼þµÄ´óÐ¡
+ * @BRIEF	ï¿½Ãµï¿½ï¿½ï¿½Ç°ï¿½Ä¼ï¿½ï¿½Ä´ï¿½Ð¡
  * @PARAM	hFile                
  
  * @RETURN	void 
@@ -592,7 +592,7 @@ T_S32 anyka_fs_tell(T_S32 hFile)
 
 /**
  * NAME         anyka_fs_isexist
- * @BRIEF	ÎÄ¼þÊÇ·ñ´æÔÚ
+ * @BRIEF	ï¿½Ä¼ï¿½ï¿½Ç·ï¿½ï¿½ï¿½ï¿½
  * @PARAM	hFile                
  
  * @RETURN	void 

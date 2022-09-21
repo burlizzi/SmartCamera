@@ -31,8 +31,8 @@ typedef struct _ANYKA_VIDEO_THREAD_INFO
 
 typedef struct _ANYKA_VIDEO_ENCODE_HANDLE
 {
-    uint8    encode_use_flag;    //Õâ¸ö±à³ÌÆ÷ÊÇ·ñÔÚ¹¤×÷
-    uint8    video_size_flag;    //720pÓëVGAµÄÑ¡Ôñ£¬TRUEÎª720P
+    uint8    encode_use_flag;    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½ï¿½Ú¹ï¿½ï¿½ï¿½
+    uint8    video_size_flag;    //720pï¿½ï¿½VGAï¿½ï¿½Ñ¡ï¿½ï¿½TRUEÎª720P
     uint8    frames;
     uint8    index;
     T_VOID  *encode_handle;
@@ -70,7 +70,7 @@ typedef struct _ANYKA_VIDEO_CTRL_INFO
     sem_t   video_sem;
     sem_t   camera_sem;
     void *encode_queue;
-    Panyka_video_check_move_info pmove_check_handle;  //ÒÆ¶¯Õì²âµÄ¾ä±ú
+    Panyka_video_check_move_info pmove_check_handle;  //ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½Ä¾ï¿½ï¿½
     anyka_video_encode_handle encode_handle[FRAMES_ENCODE_HANDLE_NUM];
 }anyka_video_ctrl_info, *Panyka_video_ctrl_info;
 
@@ -82,13 +82,13 @@ Panyka_video_ctrl_info pvideo_ctrl = NULL;
 
 /**
  * NAME         video_get_active_frame
- * @BRIEF	»ñÈ¡Êµ¼ÊÖ¡ÂÊ
- * @PARAM	int max_frame, ×î´óÖ¡ÂÊ
- 			int cur_frame, µ±Ç°Ö¡ÂÊ
+ * @BRIEF	ï¿½ï¿½È¡Êµï¿½ï¿½Ö¡ï¿½ï¿½
+ * @PARAM	int max_frame, ï¿½ï¿½ï¿½Ö¡ï¿½ï¿½
+ 			int cur_frame, ï¿½ï¿½Ç°Ö¡ï¿½ï¿½
  			int index,
  			
  * @RETURN	int
- * @RETVAL	¼û´úÂë
+ * @RETVAL	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 
 int video_get_active_frame(int max_frame, int cur_frame, int index)
@@ -140,8 +140,8 @@ void save_h264(T_U8 *data, T_U32 len)
 
 /**
  * NAME         video_encode_all_queue
- * @BRIEF	±àÂëÖ÷Ïß³Ì£¬Íê³ÉËùÓÐµÄCAMERAÊý¾ÝµÄ±àÂë£¬½«±àÂëºóµÄÊý¾Ý
-                    ËÍ¸øËùÓÐ×¢²á¹ýµÄ¹¦ÄÜÄ£¿é
+ * @BRIEF	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ðµï¿½CAMERAï¿½ï¿½ï¿½ÝµÄ±ï¿½ï¿½ë£¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    ï¿½Í¸ï¿½ï¿½ï¿½ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½Ä¹ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
  * @PARAM	pframe_buf
                     size
                    
@@ -172,7 +172,7 @@ void video_encode_all_queue(void *pframe_buf, long size, unsigned long ts,time_t
             
             if(i == FRAMES_ENCODE_PICTURE)
             {
-                //Í¼Æ¬Ö»ÒªÒ»´Î¾ÍOKÁË.
+                //Í¼Æ¬Ö»ÒªÒ»ï¿½Î¾ï¿½OKï¿½ï¿½.
                 pvideo_ctrl->encode_handle[i].encode_use_flag = 0;
             }
 
@@ -192,7 +192,7 @@ void video_encode_all_queue(void *pframe_buf, long size, unsigned long ts,time_t
 					flag[i] = 0;
 				}
 
-				//µ±Ç°±íÊ¾Ö¡ÂÊÊÇÊµ¼ÊÖ¡ÂÊµÄÕûÊý²¿·Ö£¬²»ÄÜ±í´ï12.5fpsµÄÇé¿ö£¬ËùÒÔÕâÀï×öÌØÊâ´¦Àí.
+				//ï¿½ï¿½Ç°ï¿½ï¿½Ê¾Ö¡ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Ö¡ï¿½Êµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö£ï¿½ï¿½ï¿½ï¿½Ü±ï¿½ï¿½ï¿½12.5fpsï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â´¦ï¿½ï¿½.
 				switch (cam_frame_rate) {
 				case 13:
 				case 12:
@@ -211,7 +211,7 @@ void video_encode_all_queue(void *pframe_buf, long size, unsigned long ts,time_t
                 	/*sub chanal */
                     encode_buffer = pframe_buf + size;
                 }
-                //±àÂë
+                //ï¿½ï¿½ï¿½ï¿½
                 encode_size = video_encode_frame(pvideo_ctrl->encode_handle[i].encode_handle, 
                 								encode_buffer, &pencode_outbuf, &IPFrame_type);
                 if(encode_size)
@@ -257,7 +257,7 @@ void video_encode_all_queue(void *pframe_buf, long size, unsigned long ts,time_t
 					pvideo_ctrl->encode_handle[i].fixnum++;
 
                     Panyka_video_thread_info head = pvideo_ctrl->encode_handle[i].pthread_info;
-                    //½«±àÂëºóµÄÊý¾Ý·¢¸øÕâ¸ö¾ä±úµÄËùÓÐÊµÀý
+                    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½
                     while(head)
                     {
                         int try_time = 0;
@@ -306,7 +306,7 @@ discard_cur_frame:
 
 /**
  * NAME         video_need_encode
- * @BRIEF	ÅÐ¶ÏÊÇ·ñÐèÒª±àÂë
+ * @BRIEF	ï¿½Ð¶ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½
  * @PARAM	
                     
                    
@@ -322,7 +322,7 @@ uint8 video_need_encode()
 
     if(pvideo_ctrl->pmove_check_handle)
     {
-        //ÒÆ¶¯Õì²â
+        //ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½
         return 1;
     }
     
@@ -355,9 +355,9 @@ static void del_uv(unsigned char *pbuf, int width, int height)
 
 /**
  * NAME     video_encode_read_data
- * @BRIEF	±àÂëÏß³Ì,½«Ò»Ö±ÔÚÔËÐÐ,ÏµÍ³Æô¶¯Ê±,ËûÊÇÔÚµÈ´ý,
-                    µ±ÓÐ±àÂëÐèÒªÊ±ÔÙ½øÐÐ±àÂë¹¤×÷,Èç¹ûÃ»ÓÐ±àÂëÐèÇó£¬
-                    ½«¹Ø±ÕCAMERA,
+ * @BRIEF	ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½,ï¿½ï¿½Ò»Ö±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ÏµÍ³ï¿½ï¿½ï¿½ï¿½Ê±,ï¿½ï¿½ï¿½ï¿½ï¿½ÚµÈ´ï¿½,
+                    ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ÒªÊ±ï¿½Ù½ï¿½ï¿½Ð±ï¿½ï¿½ë¹¤ï¿½ï¿½,ï¿½ï¿½ï¿½Ã»ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    ï¿½ï¿½ï¿½Ø±ï¿½CAMERA,
  * @PARAM	
  * @RETURN	void*
  * @RETVAL	
@@ -380,13 +380,13 @@ void* video_encode_read_data(void *arg)
         sem_wait(&pvideo_ctrl->video_sem);
         anyka_print("[%s:%d] the thread wake\n", __func__, __LINE__);
         camera_on();
-        //Èç¹ûÃ»ÓÐ±àÂëÈÎÎñ,½«ÍË³ö
+        //ï¿½ï¿½ï¿½Ã»ï¿½Ð±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½ï¿½Ë³ï¿½
         while(1/*video_need_encode()*/)
         {
-            //µÚÒ»:ÏÈ²É¼¯Í¼Ïñ
-            //µÚ¶þ:ÏÈÈ·¶¨ÊÇ·ñÒª×öÒÆ¶¯Õì²â
-            //µÚÈý:ÔÙÅÐ¶ÏÕâÖ¡Í¼ÏñÊÇ·ñÐèÒª±àÂë
-            //µÚÈý:¿ªÊ¼¶ÔÍ¼Ïñ½øÐÐ±àÂë
+            //ï¿½ï¿½Ò»:ï¿½È²É¼ï¿½Í¼ï¿½ï¿½
+            //ï¿½Ú¶ï¿½:ï¿½ï¿½È·ï¿½ï¿½ï¿½Ç·ï¿½Òªï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½
+            //ï¿½ï¿½ï¿½ï¿½:ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½Ö¡Í¼ï¿½ï¿½ï¿½Ç·ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½ï¿½
+            //ï¿½ï¿½ï¿½ï¿½:ï¿½ï¿½Ê¼ï¿½ï¿½Í¼ï¿½ï¿½ï¿½ï¿½Ð±ï¿½ï¿½ï¿½
 
             
     		if((cur_frame_info = camera_getframe()) == NULL)
@@ -503,7 +503,7 @@ void* video_encode_read_data(void *arg)
 
         }
 
-        //½«¹Ø±ÕCAMERAÊä³ö
+        //ï¿½ï¿½ï¿½Ø±ï¿½CAMERAï¿½ï¿½ï¿½
 		while(anyka_queue_not_empty(pvideo_ctrl->encode_queue))
 			usleep(200);
 		pthread_mutex_lock(&pvideo_ctrl->video_encode_mutex);
@@ -518,7 +518,7 @@ void* video_encode_read_data(void *arg)
 
 /**
  * NAME         video_encode_data
- * @BRIEF	±àÂëÊÓÆµÊý¾Ý
+ * @BRIEF	ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½
  * @PARAM	void *arg
  			
  * @RETURN	void* 
@@ -550,7 +550,7 @@ void* video_encode_data(void *arg)
 	                camera_get_camera_info(pcamera_stream, (void**)&pbuf, &size, &ts);
 	                video_encode_all_queue(pbuf, size, ts, posd_frame->osd_time);
 	                
-	                //ÊÍ·ÅCAMERA »º³åÇø
+	                //ï¿½Í·ï¿½CAMERA ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	                camera_usebufok(pcamera_stream);
                 }
                 free(posd_frame);
@@ -563,8 +563,8 @@ void* video_encode_data(void *arg)
 
 /**
  * NAME         video_init
- * @BRIEF	 ³õÊ¼»¯ÊÓÆµ´«ÊäµÄÏà¹Ø×ÊÔ´,Ïò±àÂëÏß³Ì×¢²á
-                     Ïà¹Ø½âÂëÐÅÏ¢
+ * @BRIEF	 ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´,ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½×¢ï¿½ï¿½
+                     ï¿½ï¿½Ø½ï¿½ï¿½ï¿½ï¿½ï¿½Ï¢
  
  * @PARAM	
 
@@ -587,7 +587,8 @@ void* my_thread_sendto_msg(void *arg)
 
 void video_init(void)
 {
-    T_ENC_INPUT encode_info;
+    //T_ENC_INPUT encode_info;
+    struct encode_param encode_info = {0};
     video_setting *pvideo_default_config = anyka_get_sys_video_setting();     
     #ifdef CONFIG_ONVIF_SUPPORT
     Psystem_onvif_set_info ponvif_default_config = anyka_get_sys_onvif_setting();
@@ -607,32 +608,45 @@ void video_init(void)
         sem_init(&pvideo_ctrl->camera_sem, 0, 0);
 
         /***********************************************************************
-            //½«³õÊ¼»¯ËùÓÐµÄ±àÂë¾ä±ú£¬Ä¿Ç°ÏµÍ³Í¬Ê±´ò¿ªËÄ¸ö¾ä±ú
-            Ã¿¸ö¾ä±úÓÐÒ»¸ö¶ÓÁÐ£¬²¢ÓÐÒ»¸öÏß³ÌÓÃÓÚ´¦ÀíÊý¾Ý
+            //ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ÐµÄ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Ç°ÏµÍ³Í¬Ê±ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½ï¿½
+            Ã¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½Ð£ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½ß³ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             FRAMES_ENCODE_RECORD,   //30  FRAMES
             FRAMES_ENCODE_720P_NET, //10 FRAMES
             FRAMES_ENCODE_VGA_NET, // 15 FRAMES
             FRAMES_ENCODE_PICTURE, // PICTURE
             ***************************************************************************/
 
-        //³õÊ¼»¯¸ßÇåÂ¼Ïñ»òÕß¾ÖÓòÍøÊÓÆµ´«Êä±àÂë¾ä±ú
+        //ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½ï¿½ß¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+
+		encode_info.minqp = 20;
+		encode_info.maxqp = 51;
+		encode_info.fps = 25;
+		encode_info.goplen = encode_info.fps * 2;	   //current gop is stationary
+		encode_info.bps = 2000;				   //kbps
+		encode_info.profile = PROFILE_MAIN;	   //main profile
+		encode_info.use_chn = ENCODE_SUB_CHN;   //use main yuv channel data
+		encode_info.enc_grp = ENCODE_RECORD;     //assignment from enum encode_group_type
+		encode_info.br_mode = BR_MODE_CBR;	   //default is cbr
+		encode_info.enc_out_type = H264_ENC_TYPE;//h.264
+
+
         encode_info.width = VIDEO_WIDTH_720P;
         encode_info.height = VIDEO_HEIGHT_720P;
-        encode_info.lumWidthSrc = VIDEO_WIDTH_720P;
-        encode_info.lumHeightSrc = VIDEO_HEIGHT_720P;
-        encode_info.minQp = pvideo_default_config->minQp;
-        encode_info.maxQp = pvideo_default_config->maxQp;
+        //encode_info.lumWidthSrc = VIDEO_WIDTH_720P;
+        //encode_info.lumHeightSrc = VIDEO_HEIGHT_720P;
+        encode_info.minqp = pvideo_default_config->minQp;
+        encode_info.maxqp = pvideo_default_config->maxQp;
         #ifdef CONFIG_ONVIF_SUPPORT
-        encode_info.gopLen = pvideo_default_config->gopLen * ponvif_default_config->fps1;
-        encode_info.framePerSecond = ponvif_default_config->fps1;
-        encode_info.bitPerSecond = ponvif_default_config->kbps1;
+        encode_info.goplen = pvideo_default_config->gopLen * ponvif_default_config->fps1;
+        encode_info.fps = ponvif_default_config->fps1;
+        encode_info.bps = ponvif_default_config->kbps1;
         #else
         encode_info.gopLen = pvideo_default_config->gopLen * pvideo_default_config->savefilefps;
         encode_info.framePerSecond = pvideo_default_config->savefilefps;
         encode_info.bitPerSecond = pvideo_default_config->savefilekbps;
         #endif
-        encode_info.encode_type = H264_ENC_TYPE;
-		encode_info.video_mode = pvideo_default_config->video_mode;
+        encode_info.enc_out_type = H264_ENC_TYPE;
+		encode_info.br_mode = pvideo_default_config->video_mode;
         encode_handle = &pvideo_ctrl->encode_handle[FRAMES_ENCODE_RECORD];
         encode_handle->index = 0;
         encode_handle->frames = encode_info.framePerSecond;
@@ -642,7 +656,7 @@ void video_init(void)
         encode_handle->pthread_info = NULL;
         encode_handle->stream_size = 0;
 
-        //³õÊ¼»¯ 720P¹ãÓòÍøÊÓÆµ¾ä±ú
+        //ï¿½ï¿½Ê¼ï¿½ï¿½ 720Pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½
         encode_info.width = VIDEO_WIDTH_720P;
         encode_info.height = VIDEO_HEIGHT_720P;
         encode_info.lumWidthSrc = VIDEO_WIDTH_720P;
@@ -663,7 +677,7 @@ void video_init(void)
         encode_handle->pthread_info = NULL;
         encode_handle->stream_size = 0;
 
-        //³õÊ¼»¯ VGAÍøÂçÊÓÆµ¾ä±ú
+        //ï¿½ï¿½Ê¼ï¿½ï¿½ VGAï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½
         encode_info.width = VIDEO_WIDTH_VGA;
         encode_info.height = VIDEO_HEIGHT_VGA;
         encode_info.lumWidthSrc = VIDEO_WIDTH_VGA;
@@ -690,7 +704,7 @@ void video_init(void)
         encode_handle->pthread_info = NULL;
         encode_handle->stream_size = 0;
 
-        //³õÊ¼»¯ picture ±àÂë¾ä±ú
+        //ï¿½ï¿½Ê¼ï¿½ï¿½ picture ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         encode_handle = &pvideo_ctrl->encode_handle[FRAMES_ENCODE_PICTURE];
         if(pvideo_default_config->pic_ch)
         {
@@ -737,7 +751,7 @@ void video_init(void)
 
 /**
  * NAME         video_malloc_stream_ram
- * @BRIEF	 ·ÖÅäÊÓÆµÄÚ´æ
+ * @BRIEF	 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½Ú´ï¿½
  
  * @PARAM	
 
@@ -766,7 +780,7 @@ T_STM_STRUCT * video_malloc_stream_ram(int size)
 
 /**
  * NAME         video_free_stream_ram
- * @BRIEF	ÊÍ·ÅÊÓÆµÄÚ´æ
+ * @BRIEF	ï¿½Í·ï¿½ï¿½ï¿½Æµï¿½Ú´ï¿½
  
  * @PARAM	
 
@@ -788,7 +802,7 @@ void video_free_stream_ram(void *pStream)
 
 /**
  * NAME         video_send_thread
- * @BRIEF	Ïò×¢²á¹ýµÄÄ£¿é·¢ËÍÊÓÆµÊý¾ÝÁ÷£¬²¢ÊÍ·ÅÏà¹Ø×ÊÔ´ 
+ * @BRIEF	ï¿½ï¿½×¢ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½é·¢ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô´ 
  
  * @PARAM	
   
@@ -805,7 +819,7 @@ void* video_send_thread(void *arg)
     while(pthread_info->run_flag)
     {
     	sem_wait(&pthread_info->video_data_mutex);
-        //Èç¹û·¢ËÍÁÐ¶ÓÖÐÓÐÊý¾Ý,½«Ò»´Î·¢ÍêËùÓÐÊý¾Ý,È»ºóÔÙ½øÈëµÈ´ý×´Ì¬
+        //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ò»ï¿½Î·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½,È»ï¿½ï¿½ï¿½Ù½ï¿½ï¿½ï¿½È´ï¿½×´Ì¬
         while(pthread_info->run_flag && anyka_queue_not_empty(pthread_info->queue_handle))
         {
 	        T_STM_STRUCT *stream = (T_STM_STRUCT *)anyka_queue_pop(pthread_info->queue_handle);
@@ -821,8 +835,8 @@ void* video_send_thread(void *arg)
 
 /**
  * NAME         video_select_encode_handle
- * @BRIEF	FRAMES_ENCODE_RECORDºÍFRAMES_ENCODE_720P_NET²»¿ÉÄÜÍ¬Ê±´æÔÚ,ÒòÐ¾Æ¬µÄ±àÂëÄÜÁ¦ÓÐÏÞ
-                    ËùÒÔÍê³É²»Í¬±àÂëÐèÇóµÄÇÐ»»£¬ËùÒÔÂ¼ÏñµÄÖ¡ÂÊ¿ÉÄÜ¹¤×÷10
+ * @BRIEF	FRAMES_ENCODE_RECORDï¿½ï¿½FRAMES_ENCODE_720P_NETï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¬Ê±ï¿½ï¿½ï¿½ï¿½,ï¿½ï¿½Ð¾Æ¬ï¿½Ä±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+                    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É²ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½Ö¡ï¿½Ê¿ï¿½ï¿½Ü¹ï¿½ï¿½ï¿½10
  
  * @PARAM	user   
                     video_bps
@@ -895,8 +909,8 @@ void video_select_encode_handle(Panyka_video_thread_info user, int video_bps)
 
 /**
  * NAME         video_check_encode_user_type
- * @BRIEF	 ¼ì²éÏµÍ³ ÖÐµÄËùÓÐ¾ä±ú ÔÚÔö¼Ó»òÉ¾³ýºó£¬
-                     ÐÞ¸´ÀàÐÍ²»Ò»ÖÂµÄÎÊÌâ,
+ * @BRIEF	 ï¿½ï¿½ï¿½ÏµÍ³ ï¿½Ðµï¿½ï¿½ï¿½ï¿½Ð¾ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ó»ï¿½É¾ï¿½ï¿½ï¿½ï¿½
+                     ï¿½Þ¸ï¿½ï¿½ï¿½ï¿½Í²ï¿½Ò»ï¿½Âµï¿½ï¿½ï¿½ï¿½ï¿½,
  * @PARAM	  
  * @RETURN	void
  * @RETVAL	
@@ -944,7 +958,7 @@ void video_check_encode_user_type()
 
 /**
  * NAME         video_set_encode_fps
- * @BRIEF	 ÉèÖÃ±àÂëµÄÖ¡ÂÊ£¬Ä¿Ç°Ö»ÓÐONVIFÓÐÕâ¸öÓÃ·¨
+ * @BRIEF	 ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½Ö¡ï¿½Ê£ï¿½Ä¿Ç°Ö»ï¿½ï¿½ONVIFï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½
  
  
  * @PARAM    video_type
@@ -962,7 +976,7 @@ void video_set_encode_fps(int video_type, int fps)
 
 /**
  * NAME         video_set_encode_bps
- * @BRIEF	 ÉèÖÃ±àÂëµÄÂëÂÊ£¬Ä¿Ç°Ö»ÓÐONVIFÓÐÕâ¸öÓÃ·¨
+ * @BRIEF	 ï¿½ï¿½ï¿½Ã±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê£ï¿½Ä¿Ç°Ö»ï¿½ï¿½ONVIFï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã·ï¿½
  * @PARAM	video_type
                     bitrate
  * @RETURN	void
@@ -977,9 +991,9 @@ void video_set_encode_bps(int video_type, int bitrate)
 
 /**
  * NAME         video_add
- * @BRIEF	 Æô¶¯ÊÓÆµ±àÂëÏß³Ì£¬½«±àÂëºóµÄÊý¾ÝÍ¨¹ý»Øµ÷´«¸øÓ¦ÓÃ,
- * @PARAM	pcallback           ÊÓÆµ»Øµ÷º¯Êý
-                    mydata              ÓÃ»§Êý¾Ý
+ * @BRIEF	 ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ß³Ì£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½ï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½,
+ * @PARAM	pcallback           ï¿½ï¿½Æµï¿½Øµï¿½ï¿½ï¿½ï¿½ï¿½
+                    mydata              ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
                     video_type
                     video_bps
  * @RETURN	void
@@ -1012,7 +1026,7 @@ void video_add(P_VIDEO_DOWITH_CALLBACK pcallback, T_VOID *mydata, int video_type
     }
     pthread_info->video_type = video_type;
     pthread_info->run_flag = 1;
-    //´´½¨Ïß³ÌºÍÐÅºÅÁ¿,Ä¬ÈÏÎªÃ»ÓÐÊý¾Ý.
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ß³Ìºï¿½ï¿½Åºï¿½ï¿½ï¿½,Ä¬ï¿½ï¿½ÎªÃ»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
     sem_init(&pthread_info->video_data_mutex, 0, 0); 
     video_select_encode_handle(pthread_info, video_bps);
 	
@@ -1030,8 +1044,8 @@ void video_add(P_VIDEO_DOWITH_CALLBACK pcallback, T_VOID *mydata, int video_type
 
 /**
  * NAME     video_add
- * @BRIEF	ÐÞ¸ÄÊÓÆµµÄÏà¹Ø²ÎÊý
- * @PARAM	mydata              ÓÃ»§Êý¾Ý
+ * @BRIEF	ï¿½Þ¸ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½Ø²ï¿½ï¿½ï¿½
+ * @PARAM	mydata              ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
             video_type
             video_bps
  * @RETURN	void
@@ -1065,7 +1079,7 @@ void video_change_attr(T_VOID *mydata, int video_type, int video_bps)
             }
             else
             {
-                //Èç¹ûÇÐ»»±àÂë¸ñÊ½£¬½«ÏÈ´ÓÒ»¸ö¶ÓÁÐÖÐÉ¾³ýÔÙÔö¼Óµ½ÁíÒ»¸ö
+                //ï¿½ï¿½ï¿½ï¿½Ð»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½È´ï¿½Ò»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Óµï¿½ï¿½ï¿½Ò»ï¿½ï¿½
                 if(head == pvideo_ctrl->encode_handle[i].pthread_info)
                 {
                     pvideo_ctrl->encode_handle[i].pthread_info = head->next;
@@ -1108,8 +1122,8 @@ void video_change_attr(T_VOID *mydata, int video_type, int video_bps)
 
 /**
  * NAME         video_set_iframe
- * @BRIEF	Ç¿ÖÆ½«ÊÓÆµÉèÖÃÎªIÖ¡
- * @PARAM	mydata              ÓÃ»§Êý¾Ý
+ * @BRIEF	Ç¿ï¿½Æ½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ÎªIÖ¡
+ * @PARAM	mydata              ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
  * @RETURN	void
  * @RETVAL	
  */
@@ -1147,8 +1161,8 @@ void video_set_iframe(T_VOID *mydata)
 
 /**
  * NAME         video_del
- * @BRIEF	¹Ø±Õ¶ÔÓ¦µÄÊÓÆµ¾ä±ú£¬ÕâÀï¿ÉÄÜ»á´¥·¢CAMERAµÄ¹Ø±Õ¶¯×÷
- * @PARAM	mydata              ÓÃ»§Êý¾Ý
+ * @BRIEF	ï¿½Ø±Õ¶ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü»á´¥ï¿½ï¿½CAMERAï¿½Ä¹Ø±Õ¶ï¿½ï¿½ï¿½
+ * @PARAM	mydata              ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
  * @RETURN	void
  * @RETVAL	
  */
@@ -1182,7 +1196,7 @@ void video_del(T_VOID *mydata)
             {
                 cur->next = head->next;
             }
-            //Èç¹û½âÂëÃ»ÓÐÈÎÎñ£¬½«ÏÈÉèÖÃ²»½âÂë
+            //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ñ£¬½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã²ï¿½ï¿½ï¿½ï¿½ï¿½
             if(pvideo_ctrl->encode_handle[i].pthread_info == NULL)
             {
                 pvideo_ctrl->encode_handle[i].encode_use_flag = 0;
@@ -1194,7 +1208,7 @@ void video_del(T_VOID *mydata)
             pthread_mutex_unlock(&pvideo_ctrl->video_ctrl_mutex);
             head->run_flag = 0;
             sem_post(&head->video_data_mutex);
-            //½«¹Ø±Õ·¢ËÍÊý¾ÝÏß³Ì,²¢ÊÍ·ÅËùÓÐÏß³ÌÕ¼ÓÃµÄ×ÊÔ´.
+            //ï¿½ï¿½ï¿½Ø±Õ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½,ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ß³ï¿½Õ¼ï¿½Ãµï¿½ï¿½ï¿½Ô´.
             //anyka_print("[%s:%d] waiting until thread is over!\n", __func__, __LINE__);
             //sleep(1);
             pthread_join(head->id, NULL);
@@ -1211,12 +1225,12 @@ void video_del(T_VOID *mydata)
 
 /**
  * NAME         video_move_check_malloc
- * @BRIEF	ÒÆ¶¯Õì²â·ÖÅäÄÚ´æ
- * @PARAM	T_U32 size, Òª·ÖÅäµÄÄÚ´æ´óÐ¡
+ * @BRIEF	ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½
+ * @PARAM	T_U32 size, Òªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½Ð¡
  			T_pSTR filename, 
  			T_U32 line
  * @RETURN	T_pVOID
- * @RETVAL	Ö¸Ïò·ÖÅäºóµÄÄÚ´æµØÖ·
+ * @RETVAL	Ö¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½ï¿½Ö·
  */
 
 static T_pVOID video_move_check_malloc(T_U32 size, T_pSTR filename, T_U32 line)
@@ -1227,8 +1241,8 @@ static T_pVOID video_move_check_malloc(T_U32 size, T_pSTR filename, T_U32 line)
 
 /**
  * NAME         video_move_check_free
- * @BRIEF	ÊÍ·ÅÒÆ¶¯Õì²â·ÖÅäµÄÄÚ´æ
- * @PARAM	T_pVOID mem£¬ÄÚ´æ¿Õ¼äÊ×µØÖ·
+ * @BRIEF	ï¿½Í·ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½
+ * @PARAM	T_pVOID memï¿½ï¿½ï¿½Ú´ï¿½Õ¼ï¿½ï¿½×µï¿½Ö·
  * @RETURN	T_pVOID
  * @RETVAL	NULL
  */
@@ -1241,7 +1255,7 @@ static T_pVOID video_move_check_free(T_pVOID mem)
 
 /**
  * NAME         video_init_move_handle
- * @BRIEF	³õÊ¼»¯ÒÆ¶¯Õì²â¹¦ÄÜ
+ * @BRIEF	ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½â¹¦ï¿½ï¿½
  * @PARAM	height
                     width
                     detction
@@ -1280,7 +1294,7 @@ int video_init_move_handle(int height, int width, T_MOTION_DETECTOR_DIMENSION *d
     openParam.m_CBFunc.m_FunFree   = (MEDIALIB_CALLBACK_FUN_FREE)video_move_check_free;
 
     //open the detector
-    pvideo_ctrl->pmove_check_handle->encode_handle = Motion_Detector_Open( &openParam );
+//    pvideo_ctrl->pmove_check_handle->encode_handle = Motion_Detector_Open( &openParam );
     if (!pvideo_ctrl->pmove_check_handle->encode_handle) 
     {
         anyka_print("[%s:%d] motion detector open failed!\n", __func__, __LINE__);
@@ -1290,12 +1304,12 @@ int video_init_move_handle(int height, int width, T_MOTION_DETECTOR_DIMENSION *d
     anyka_print("[%s:%d] Open MotionDect: ratio=%d, m_uThreshold=%d\n",
 					__func__, __LINE__, *ratios, openParam.m_uThreshold);    
 	
-    Motion_Detector_SetRatio(pvideo_ctrl->pmove_check_handle->encode_handle, ratios);   
+//    Motion_Detector_SetRatio(pvideo_ctrl->pmove_check_handle->encode_handle, ratios);   
     return 1;
 }
 /**
  * NAME         video_destroy_move_handle
- * @BRIEF	¹Ø±ÕÒÆ¶¯Õì²â¹¦ÄÜ
+ * @BRIEF	ï¿½Ø±ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½â¹¦ï¿½ï¿½
  * @PARAM	
  * @RETURN	
  * @RETVAL	
@@ -1307,13 +1321,13 @@ void video_destroy_move_handle()
     
     if((pvideo_ctrl  && pvideo_ctrl->pmove_check_handle && pvideo_ctrl->pmove_check_handle->encode_handle))
     {
-        Motion_Detector_Close(pvideo_ctrl->pmove_check_handle->encode_handle);
+//        Motion_Detector_Close(pvideo_ctrl->pmove_check_handle->encode_handle);
         pvideo_ctrl->pmove_check_handle->encode_handle = NULL;
     }
 }
 /**
  * NAME         video_set_move_check_attr
- * @BRIEF	ÉèÖÃÒÆ¶¯Õì²â²ÎÊý
+ * @BRIEF	ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * @PARAM	ratios
  * @RETURN	
  * @RETVAL	
@@ -1323,14 +1337,14 @@ void video_set_move_check_attr(uint16 *ratios)
 {
     if(pvideo_ctrl && pvideo_ctrl->pmove_check_handle && pvideo_ctrl->pmove_check_handle->encode_handle)
     {
-        Motion_Detector_SetRatio(pvideo_ctrl->pmove_check_handle->encode_handle, ratios);
+//        Motion_Detector_SetRatio(pvideo_ctrl->pmove_check_handle->encode_handle, ratios);
     }
     
 }
 
 /**
  * NAME         video_move_check_main
- * @BRIEF	ÒÆ¶¯Õì²âÖ÷¹¦ÄÜ
+ * @BRIEF	ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * @PARAM	arg
  * @RETURN	
  * @RETVAL	
@@ -1362,7 +1376,7 @@ void* video_move_check_main(void *arg)
 
 		if (_1st_stream && _2nd_stream && !pre_2_cmp)
 		{
-			cur_flag = Motion_Detector_Handle(pmove_handle->encode_handle, _1st_stream->buf, _2nd_stream->buf);
+//			cur_flag = Motion_Detector_Handle(pmove_handle->encode_handle, _1st_stream->buf, _2nd_stream->buf);
 			if (cur_flag)
 				pre_2_stream_moving = 1;
 			else 
@@ -1378,7 +1392,7 @@ void* video_move_check_main(void *arg)
 			if (pre_2_stream_moving)
 			{
 				// check the yuv data;
-				cur_flag = Motion_Detector_Handle(pmove_handle->encode_handle, _2nd_stream->buf, cur_stream->buf);
+//				cur_flag = Motion_Detector_Handle(pmove_handle->encode_handle, _2nd_stream->buf, cur_stream->buf);
 				if(cur_flag && (pmove_handle->pcallback))
 				{
 					if(pvideo_ctrl->check_frame)
@@ -1406,14 +1420,14 @@ void* video_move_check_main(void *arg)
 
 /**
  * NAME         video_start_move_check
- * @BRIEF	Æô¶¯ÒÆ¶¯Õì²âÖ÷¹¦ÄÜ
+ * @BRIEF	ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * @PARAM	height
                     width
                     detction
                     ratios
-                    Palarm_func  Èç¹û·¢ÉúÕì²âÊ±µÄ»Øµ÷º¯Êý
-                    user        ÓÃ»§Êý¾Ý
-                    filter_check   µ±Ç°ÊÇ·ñ¹ýÂËÕì²âµÄ£¬Ä¿Ç°Éè¼ÆÌÚÑ¶µÄÔÚÊÓÆµ¹Û¿´µÄÊ±ºò²»×öÕì²â
+                    Palarm_func  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½Ä»Øµï¿½ï¿½ï¿½ï¿½ï¿½
+                    user        ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½
+                    filter_check   ï¿½ï¿½Ç°ï¿½Ç·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½Ä¿Ç°ï¿½ï¿½ï¿½ï¿½ï¿½Ñ¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æµï¿½Û¿ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  * @RETURN	0-->fail; 1-->ok
  * @RETVAL	
  */
@@ -1490,7 +1504,7 @@ int video_start_move_check(int height, int width, T_MOTION_DETECTOR_DIMENSION *d
 
 /**
  * NAME         video_start_move_check
- * @BRIEF	Í£Ö¹ÒÆ¶¯Õì²â
+ * @BRIEF	Í£Ö¹ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½
  * @PARAM	
  * @RETURN	
  * @RETVAL	

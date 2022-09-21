@@ -1,5 +1,5 @@
 
-CROSS_COMPILE=arm-none-linux-gnueabi-
+CROSS_COMPILE= ~/opt/arm-anykav200-crosstool/usr/bin/arm-anykav200-linux-uclibcgnueabi-
 CC=$(CROSS_COMPILE)gcc
 CPP=$(CC) -E
 LD=$(CROSS_COMPILE)ld

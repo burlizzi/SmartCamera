@@ -2,13 +2,13 @@
 #Makefile
 #
 
-dir_y += updater
-dir_y += disk_repair
-dir_y += daemon
-dir_y += smartlink
+#dir_y += updater
+#dir_y += disk_repair
+#dir_y += daemon
+#dir_y += smartlink
 dir_y += anyka_ipc
-dir_y += usb_serial
-dir_y += dfrobot_test 
+#dir_y += usb_serial
+#dir_y += dfrobot_test 
 all:
 	@for i in $(dir_y); \
 	do \

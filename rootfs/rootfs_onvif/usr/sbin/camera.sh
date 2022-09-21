@@ -22,6 +22,7 @@ usage()
 
 camera_remove()
 {
+	rmmod /usr/modules/ak_info_dump.ko
 	rmmod /usr/modules/akcamera.ko
 	find /usr/modules -maxdepth 1 -type f -name "sensor_*.ko" -exec rmmod {} \;
 	find /etc/jffs2 -maxdepth 1 -type f -name "sensor_*.ko" -exec rmmod {} \;
@@ -32,6 +33,7 @@ camera_setup()
 	find /etc/jffs2 -maxdepth 1 -type f -name "sensor_*.ko" -exec insmod {} \;
 	find /usr/modules -maxdepth 1 -type f -name "sensor_*.ko" -exec insmod {} \;
 	insmod /usr/modules/akcamera.ko
+	insmod /usr/modules/ak_info_dump.ko
 }
 
 case "$MODE" in

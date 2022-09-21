@@ -7,7 +7,7 @@ LOCAL_SRC_CFILES := \
 		disk_repair.c 
 
 LOCAL_MODULE := dsk_repair
-PREFIX := arm-none-linux-gnueabi-
+PREFIX :=  ~/opt/arm-anykav200-crosstool/usr/bin/arm-anykav200-linux-uclibcgnueabi-
 
 
 LOCAL_SHARED_LIBRARIES := $(LOCAL_SHARED_LIBRARIES)

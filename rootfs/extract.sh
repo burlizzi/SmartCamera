@@ -24,6 +24,8 @@ $RM ${ROOTFSDIR}
 $ECHO -n "Extracting rootfs..."
 ${TAR} zxvf ${ROOTFSFILE} >/dev/null  || extract_error
 $ECHO "Done."
+rm -fr $ROOTFSDIR/usr/modules/*
+
 $ECHO -n "Changing Owner to current user..."
 ${CHOWN} -R ${CURRENT_USER}:${CURRENT_GROUP} $ROOTFSDIR
 $ECHO "Done."
